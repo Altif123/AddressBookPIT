@@ -19,4 +19,9 @@ $app->get('/hello', function () use ($app) {
     return view('hello');
 });
 
-$app->get('/getJson', 'AddressController@getJson');
+$app->get('/index', 'AddressController@index');
+$app->POST('/address/{id}', 'AddressController@destroy');
+
+//$app->get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+//    //
+//});
