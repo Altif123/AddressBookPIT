@@ -20,6 +20,8 @@ $app->get('/hello', function () use ($app) {
 });
 
 $app->get('/index', 'AddressController@index');
+$app->get('/create', 'AddressController@create');
+$app->POST('/create', 'AddressController@store');
 $app->POST('/address/{id}', 'AddressController@destroy');
 
 //$app->get('posts/{post}/comments/{comment}', function ($postId, $commentId) {

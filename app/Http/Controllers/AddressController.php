@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+
 class AddressController extends Controller
 {
     /**
@@ -20,6 +23,16 @@ class AddressController extends Controller
         //dd((array_first($this->getData())));
         return view('address/index',['data' => $this->getData()]);
     }
+    public function create()
+    {
+        return view('address/create');
+    }
+    public function store(Request $request)
+    {
+        $first_name = $request->input('Address');
+        dd($first_name);
+    }
+
 
 
     public function destroy($id)

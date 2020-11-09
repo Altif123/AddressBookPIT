@@ -23,10 +23,9 @@
                 <tr>
                     <div class="card" style="width: 18rem;">
                         <form method="POST" action="/address/{{$person}}">
-                            {{--<input type="hidden" name="_method" value="DELETE">--}}
                             <button type="submit" role="button">
                                 <i class="fas fa-trash inline crud-button cursor-pointer px-3 py-2">
-                                    Delete{{$person}}
+                                    Delete
                                 </i>
                             </button>
                         </form>
