@@ -29,8 +29,14 @@ class AddressController extends Controller
     }
     public function store(Request $request)
     {
-        $first_name = $request->input('Address');
-        dd($first_name);
+        $data = $this->getData();
+        $input = $request->all();
+        //push on to array then encode to file
+        array_push($data,$input);
+        $encoded = json_encode($data,JSON_PRETTY_PRINT);
+        file_put_contents('data.json',$encoded);
+
+
     }
 
 
