@@ -22,19 +22,15 @@ $app->get('/hello', function () use ($app) {
 $app->get('/index', 'AddressController@index');
 $app->get('/create', 'AddressController@create');
 $app->get('/edit/{id}', 'AddressController@edit');
+
 $app->POST('/create', 'AddressController@store');
 $app->POST('/address/{id}', 'AddressController@destroy');
-$app->POST('/update/{id}', 'AddressController@update');
+$app->PUT('/update/{id}', 'AddressController@update');
 
-
-//$app->group(['prefix' => 'api'], function () use ($router) {
-//    $router->get('authors',  ['uses' => 'AuthorController@showAllAuthors']);
+////used for the API integration
+//$app->group(['prefix' => 'api'], function () use ($app) {
 //
-//    $router->get('authors/{id}', ['uses' => 'AuthorController@showOneAuthor']);
-//
-//    $router->post('authors', ['uses' => 'AuthorController@create']);
-//
-//    $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
-//
-//    $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
+//    $app->post('create', ['uses' => 'AddressController@create']);
+//    $app->post('/address/{id}', 'AddressController@destroy');
+//    $app->put('/update/{id}', ['uses' => 'AddressController@update']);
 //});

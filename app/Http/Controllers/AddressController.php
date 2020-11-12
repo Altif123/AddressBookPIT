@@ -30,7 +30,7 @@ class AddressController extends Controller
      * Store the data entered on the create form to the json file
      *
      * @param Request $request
-     * @return void
+     * @return json response
      */
     public function store(Request $request)
     {
@@ -38,6 +38,7 @@ class AddressController extends Controller
         $input = $request->all();
         array_push($data,$input);
         $this->encodeToJson($data);
+        return response('saved Successfully', 200)->json();
     }
 
     /**
@@ -57,7 +58,7 @@ class AddressController extends Controller
      *
      * @param Request $request
      * @param $id
-     * @return void
+     * @return json response
      */
     public function update(Request $request, $id)
     {
@@ -65,19 +66,21 @@ class AddressController extends Controller
         $update = $request->all();
         $this->getData()[$id] = $update;
         $this->encodeToJson($update);
+        return response()->json("Successfully Updated Record", 200);
     }
 
     /**
      * Deletes item from json file
      *
      * @param $id
-     * @return void
+     * @return json response
      */
     public function destroy($id)
     {
         $data = $this->getData();
         unset($data[$id]);
         $this->encodeToJson($data);
+        return response()->json( 'Successfully Deleted', 200);
     }
     /**
      * Pulls data from the json file
