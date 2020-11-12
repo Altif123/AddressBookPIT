@@ -18,12 +18,23 @@ $app->get('/', function () use ($app) {
 $app->get('/hello', function () use ($app) {
     return view('hello');
 });
-
+//
 $app->get('/index', 'AddressController@index');
 $app->get('/create', 'AddressController@create');
+$app->get('/edit/{id}', 'AddressController@edit');
 $app->POST('/create', 'AddressController@store');
 $app->POST('/address/{id}', 'AddressController@destroy');
+$app->POST('/update/{id}', 'AddressController@update');
 
-//$app->get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
-//    //
+
+//$app->group(['prefix' => 'api'], function () use ($router) {
+//    $router->get('authors',  ['uses' => 'AuthorController@showAllAuthors']);
+//
+//    $router->get('authors/{id}', ['uses' => 'AuthorController@showOneAuthor']);
+//
+//    $router->post('authors', ['uses' => 'AuthorController@create']);
+//
+//    $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
+//
+//    $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
 //});

@@ -1,52 +1,49 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.app')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+@section('content')
 
+        <div class="album py-5 bg-light d-flex">
+            <div class="row justify-content-center">
+                @foreach($data as $person => $personData)
+                    <tr>
 
-    <title>Address Book</title>
-</head>
-<body>
-<div>
-    <h1> Address Book </h1>
-    <div class="container">
-        <div class="row">
-            @foreach($data as $person => $personData)
-                <tr>
-                    <div class="card" style="width: 18rem;">
-                        <form method="POST" action="/address/{{$person}}">
-                            <button type="submit" role="button">
-                                <i class="fas fa-trash inline crud-button cursor-pointer px-3 py-2">
-                                    Delete
-                                </i>
-                            </button>
-                        </form>
-
-                        <div class="card-body">
-                            @foreach($personData as $key => $value)
-                                {{$key}}
-                                <p class="card-text">{{$value}}</p>
-                            @endforeach
+                        <div class="card" style="width: 22rem;">
+                            <div class="container">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{$personData['First_Name']}} {{$personData['Last_Name']}}</h3>
+                                    <p class="card-text">{{$personData['Address']}}</p>
+                                    <p class="card-text">{{$personData['Phone']}}</p>
+                                </div>
+                                <div class="row d-flex align-items-end mb-2">
+                                    <div class="col-12 col-md-6">
+                                        <form method="POST" action="/address/{{$person}}">
+                                            <button type="submit" role="button" class="btn btn-secondary btn-sm">
+                                                <i class="fas fa-trash inline crud-button cursor-pointer px-3 py-2">
+                                                    Delete
+                                                </i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <a href="/edit/{{$person}}">
+                                            <button type="submit" role="button" class="btn btn-secondary btn-sm">
+                                                <i class="fas fa-edit inline crud-button cursor-pointer px-3 py-2">
+                                                    Edit
+                                                </i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-primary"></a>
-                    </div>
-                </tr>
-            @endforeach
+                    </tr>
+                @endforeach
+            </div>
         </div>
-    </div>
-</div>
+@endsection
 
 
-</body>
-</html>
+
 
 
 
